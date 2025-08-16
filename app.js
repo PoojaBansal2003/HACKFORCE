@@ -11,7 +11,7 @@ const logger = require("./utils/logger");
 const compression = require("compression");
 // const { defaultLimiter } = require("./middlewares/rateLimit");
 const errorHandler = require("./middlewares/error");
-
+const authRouter = require("./routes/auth.routes.js");
 // Route imports
 // const authRoute = require("");
 
@@ -42,6 +42,8 @@ app.get("/", (req, res) => {
   res.send("API is running");
 });
 
+app.use("/api/user", authRouter);
+
 app.get("*", (req, res) => {
   res.send("Website route not found");
 });
@@ -65,4 +67,4 @@ process.on("unhandledRejection", (err) => {
 });
 
 // Export server, app, io, and mqttService
-module.exports = { app, server, io, mqttService };
+module.exports = { app, server };

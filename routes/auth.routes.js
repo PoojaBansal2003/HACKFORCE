@@ -1,34 +1,39 @@
-// routes/auth.routes.js
 const express = require("express");
 const {
   register,
   login,
+  googleAuth,
   getMe,
   updateProfile,
   changePassword,
+  forgotPassword,
+  resetPassword,
+  sendEmailVerification,
+  verifyEmail,
+  logout,
+  deactivateAccount,
 } = require("../controllers/auth.controller");
 const { protect } = require("../middlewares/auth");
-const {
-  validate,
-  registerValidator,
-  loginValidator,
-} = require("../utils/validators");
-const { authLimiter } = require("../middlewares/rateLimit");
+const { validateRegistration, validateLogin } = require("../utils/validators");
 
 const router = express.Router();
 
-// Apply rate limiting to auth routes
-// router.use(authLimiter);
-
 // Public routes
-router.post("/register", validate(registerValidator), register);
-// router.post("/register", register);
-router.post("/login", validate(loginValidator), login);
+router.post("/register", validateRegistration, register);
+router.post("/login", validateLogin, login);
+router.post("/google", googleAuth);
+router.post("/forgot-password", forgotPassword);
+router.put("/reset-password/:token", resetPassword);
+router.get("/verify-email/:token", verifyEmail);
 
-// Protected routes
-router.use(protect);
+// Protected routes (require authentication)
+router.use(protect); // All routes after this middleware require authentication
+
 router.get("/me", getMe);
 router.put("/profile", updateProfile);
-router.put("/password", changePassword);
+router.put("/change-password", changePassword);
+router.post("/send-verification", sendEmailVerification);
+router.post("/logout", logout);
+router.put("/deactivate", deactivateAccount);
 
 module.exports = router;

@@ -4,8 +4,6 @@ const logger = require("../utils/logger");
 const config = require("../config/config");
 const User = require("../models/user.model");
 // Add this model for sensor data storage
-const SensorData = require("../models/server.model");
-const { AudioClipManager } = require("./AudioClipManager");
 
 class WebSocketService {
   constructor() {

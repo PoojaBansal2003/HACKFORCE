@@ -1,7 +1,7 @@
 {
-  "name": "care-management-system",
+  "name": "hack-mate-server",
   "version": "1.0.0",
-  "description": "Backend API for care management system",
+  "description": "Backend API for hack mate server",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
@@ -24,11 +24,13 @@
     "bcryptjs": "^2.4.3",
     "body-parser": "^2.2.0",
     "colors": "^1.4.0",
+    "compression": "^1.8.1",
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",
     "express": "^4.21.2",
     "express-rate-limit": "^6.7.0",
     "express-validator": "^7.0.1",
+    "google-auth-library": "^10.2.1",
     "helmet": "^6.1.5",
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^7.1.0",

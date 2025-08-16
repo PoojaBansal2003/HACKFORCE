@@ -45,18 +45,14 @@ const userSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   name: { type: String, required: true },
-  avatar: String,
   skills: [String],
+  age: Number,
   experience: { type: String, enum: ["beginner", "intermediate", "advanced"] },
   github: String,
   linkedin: String,
   phone: String,
   profilePicture: String,
-  verificationToken: String,
-  resetPasswordToken: String,
-  resetPasswordExpires: Date,
   createdAt: { type: Date, default: Date.now },
-  updatedAt: { type: Date, default: Date.now },
 });
 
 // Hackathon Schema
