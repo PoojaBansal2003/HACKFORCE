@@ -44,6 +44,8 @@ app.get("/", (req, res) => {
 
 app.use("/api/user", authRouter);
 
+// app.use("/api/team");
+
 app.get("*", (req, res) => {
   res.send("Website route not found");
 });
